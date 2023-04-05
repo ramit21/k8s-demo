@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mydeployment
+  name: mydeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeployment
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeployment
+    spec:
+      imagePullSecrets:
+      - name: dockerhub-secret
+      containers:
+      - image: ramit21/docker-demo-application:latest
+        name: mydeployment
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+
