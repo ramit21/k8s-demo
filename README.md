@@ -19,6 +19,7 @@ kubectl create secret docker-registry dockerhub-secret --docker-server=docker.io
 4. Install Kustomize from https://github.com/kubernetes-sigs/kustomize/releases
 5. To create k8s resources, go to k8-config folder of the project and do kubectl apply -f <file.yaml> for each resource config, or do it via argocd setup as explained below.
 6. Once all resources including the nodeport service have been created, run below command to get url to access app on local. Once you open it, you will notice the application has picked up overriden env variable from config.yaml.
+ie. the app in browser says 'Hello World from env = dev' instead of env = local.
 ```
 minikube service mydeployment --url
 ```
