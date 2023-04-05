@@ -1,7 +1,11 @@
 # Kustomize-argocd
-Deploy springboot app using Kustomize and ArgoCD.
+Deploy springboot app on a k8s cluster.
 
-In this project, we setup Kubernetes deployment for an application using Kustomize and ArgoCd,
+In this project, we setup Kubernetes deployment for a spring boot application. 
+
+Additionally, we also demo Kustomize and Argocd setup.
+
+Project for spring boot app being referred: https://github.com/ramit21/docker-demo.
 
 ## Project setup
 1. Check the docker-demo project, where the application's docker image is built and uploaded to dockerhub.
@@ -25,7 +29,7 @@ minikube service mydeployment --url
 ```
 
 ##Argocd setup
-<Coming soon>
+Coming soon...
 
 ## Features used in this project
 1. Any change to config yaml files, run 'kustomize build' on local to ensure no syntax issues with yamls.
