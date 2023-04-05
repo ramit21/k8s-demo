@@ -1,4 +1,4 @@
-# Kustomize-argocd
+# Kubernetes demo
 Deploy springboot app on a k8s cluster.
 
 In this project, we setup Kubernetes deployment for a spring boot application. 
