@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: argo-demo-app-dev
+  namespace: myargo
+spec: 
+  destination:
+    namespace: demo-app
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: k8-config/overlays/dev
+    repoURL: "https://github.com/ramit21/k8s-demo.git"
+    targetRevision: main
+    kustomize:
+      namePrefix: dev-
+      commonLabels:
+        app: demo
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -58,7 +58,10 @@ helm uninstall myargo -n myargo //to remove argocd
 kubectl apply -f application.yaml
 ```
 
-4. Do step 6 above, and call the application from browser.
+4. As done in step 6 above, and call the application from browser. Note that this time, service name is prefixed with dev-, and namespace is demo-app.
+```
+minikube service dev-mydeployment --url -n demo-app
+```
 
 ## Features used in this project
 1. Any change to config yaml files, run 'kustomize build' on local to ensure no syntax issues with yamls.
@@ -74,4 +77,7 @@ kubectl apply -f application.yaml
 	Also note how we give prefix and labels that get applied to all k8s resources created.
 	Note how path is pointing to dev overlay. So argocd running on dev cluster will point to dev overlay, and likewise for prod.
 	Any commit to source k8-configs (including app image version), argocd will pick up and apply on the cluster.
+8. Argocd UI: you can clock on the pod, and check application logs.
+   When syncing - select prune to remove resources that have been renamed or removed from k8s-configs.
+   When syncing - select Force, if you are pushing changes to applciation against same image version, and want to pickup latest. The deployment should also have imagePullAlways set as true for this to work.   
 
