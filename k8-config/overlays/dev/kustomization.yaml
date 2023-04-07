@@ -1,4 +1,4 @@
-namespace: demo-app
+namespace: demo-app-dev
 resources:
 - ../../base
 apiVersion: kustomize.config.k8s.io/v1beta1

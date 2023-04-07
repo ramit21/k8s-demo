@@ -53,6 +53,12 @@ helm list -n myargo
 helm uninstall myargo -n myargo //to remove argocd
 ```
 
+3. cd into argocd folder of the project, and create the argocd application. Open Argocd UI, and you will see resources provisioned (screenshot added at root for reference)
+```
+kubectl apply -f application.yaml
+```
+
+4. Do step 6 above, and call the application from browser.
 
 ## Features used in this project
 1. Any change to config yaml files, run 'kustomize build' on local to ensure no syntax issues with yamls.
@@ -64,4 +70,8 @@ helm uninstall myargo -n myargo //to remove argocd
 6. Things to notice in overlays/dev/Kustomization.yaml: we give namespace at one place, and all resources get created in it. 
    Note how it referes to resouces in base folder, and then applies **patches** to update base resource with a modified version of spec.
    You can also use **patchesJson6902** to add more elements to the base resource yamls, eg add more Istio virual service routes.
+7. argocd/application.yaml: note that we give same namespace, where argocd was setup initially. 
+	Also note how we give prefix and labels that get applied to all k8s resources created.
+	Note how path is pointing to dev overlay. So argocd running on dev cluster will point to dev overlay, and likewise for prod.
+	Any commit to source k8-configs (including app image version), argocd will pick up and apply on the cluster.
 
