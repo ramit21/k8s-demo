@@ -60,6 +60,8 @@ helm uninstall myargo -n myargo //to remove argocd
  To demonstrate, we override the env variable (prop.env) for the application (initially defined in application.properties of app code) in the dev overlay config.yaml. When the application is deployed for dev env, and the app started, it will pick up the value from config file, and override with what was given in application.properties.
 3. On similar lines, you can even patch the deployment yaml, giving snapshots versions (generated from feature branches) for testing in lower environments, before feature branches are merged into main.
 4. Notice how we connect to dockerhub to download the image using secret of type docker-registry with the dockerhub credentials. 
-5.  
-
+5. Theory on ArgoCd is covered here: https://github.com/ramit21/argo-cd
+6. Things to notice in overlays/dev/Kustomization.yaml: we give namespace at one place, and all resources get created in it. 
+   Note how it referes to resouces in base folder, and then applies **patches** to update base resource with a modified version of spec.
+   You can also use **patchesJson6902** to add more elements to the base resource yamls, eg add more Istio virual service routes.
 

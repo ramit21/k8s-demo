@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-props-map
+data:
+  prop.env: dev
