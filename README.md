@@ -1,4 +1,4 @@
-# Kubernetes demo
+# Kubernetes GitOps demo
 Deploy spring-boot app on a k8s cluster.
 
 In this project, we setup Kubernetes deployment for a spring boot application. 
